@@ -3,7 +3,8 @@ package Ejercicio1;
 import java.util.ArrayList;
 
 public class Hospital {
-    // Lista global que almacena todos los objetos de tipo Paciente registrados
+
+	  // Lista global que almacena todos los objetos de tipo Paciente registrados
     private ArrayList<Paciente> pacientes = new ArrayList<>();
 
     // Método para registrar un nuevo paciente en el hospital

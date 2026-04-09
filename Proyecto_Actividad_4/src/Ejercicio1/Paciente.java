@@ -3,7 +3,7 @@ package Ejercicio1;
 import java.util.ArrayList;
 
 public class Paciente {
-    // Atributos de identificación y condición médica
+	 // Atributos de identificación y condición médica
     private int identificacion;
     private String nombre;
     private int edad;
@@ -11,14 +11,13 @@ public class Paciente {
     private String tipoCancer;
     private String etapa;
     private String estado;
-
     // Listas dinámicas para manejar múltiples exámenes y tratamientos por cada paciente
     private ArrayList<Examen> examenes = new ArrayList<>();
     private ArrayList<Tratamiento> tratamientos = new ArrayList<>();
-
-    // Constructor: Recibe y asigna toda la información inicial del paciente
+ // Constructor: Recibe y asigna toda la información inicial del paciente
     public Paciente(int identificacion, String nombre, int edad,
                     String genero, String tipoCancer, String etapa, String estado) {
+
         this.identificacion = identificacion;
         this.nombre = nombre;
         this.edad = edad;
@@ -27,19 +26,29 @@ public class Paciente {
         this.etapa = etapa;
         this.estado = estado;
     }
-
     // Métodos Getter: Necesarios para extraer datos específicos en el cálculo de estadísticas
-    public String getTipoCancer() { return tipoCancer; }
-    public String getEstado() { return estado; }
-
+    public String getTipoCancer() {
+        return tipoCancer;
+    }
+    
+    public String getEstado() {
+        return estado;
+    }
     // Gestión de exámenes: Permite agregar uno nuevo o recuperar la lista completa
-    public void agregarExamen(Examen e) { examenes.add(e); }
-    public ArrayList<Examen> getExamenes() { return examenes; }
-
+    public void agregarExamen(Examen e) {
+        examenes.add(e);
+    }
+    
+    public ArrayList<Examen> getExamenes() {
+        return examenes;
+    }
+    public void agregarTratamiento(Tratamiento t) {
+        tratamientos.add(t);
     // Gestión de tratamientos: Permite agregar uno nuevo o recuperar la lista completa
-    public void agregarTratamiento(Tratamiento t) { tratamientos.add(t); }
-    public ArrayList<Tratamiento> getTratamientos() { return tratamientos; }
-
+    }
+    public ArrayList<Tratamiento> getTratamientos() {
+        return tratamientos;
+    }
     // Método toString: Resume el perfil del paciente en una sola línea de texto
     public String toString() {
         return "ID: " + identificacion +
@@ -50,4 +59,5 @@ public class Paciente {
                ", Etapa: " + etapa +
                ", Estado: " + estado;
     }
+    
 }

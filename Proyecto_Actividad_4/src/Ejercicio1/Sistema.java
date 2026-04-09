@@ -3,40 +3,56 @@ package Ejercicio1;
 public class Sistema {
 
     public static void main(String[] args) {
-        // 1. Instanciación del hospital
+
         Hospital hospital = new Hospital();
 
-        // 2. Creación y registro de pacientes de ejemplo
-        hospital.agregarPaciente(new Paciente(1, "Julian", 45, "Masculino", "Leucemia", "II", "En tratamiento"));
-        hospital.agregarPaciente(new Paciente(2, "Antonieta", 50, "Femenino", "Linfoma", "III", "Remision"));
-        hospital.agregarPaciente(new Paciente(3, "Karl", 60, "Masculino", "Sarcoma", "IV", "Fallecido"));
-        hospital.agregarPaciente(new Paciente(4, "Dominic", 39, "Femenino", "Leucemia", "I", "En tratamiento"));
-        hospital.agregarPaciente(new Paciente(5, "Louie", 55, "Masculino", "Linfoma", "II", "Remision"));
-        hospital.agregarPaciente(new Paciente(6, "Sara", 47, "Femenino", "Sarcoma", "III", "En tratamiento"));
+        // Pacientes
+        Paciente p1 = new Paciente(1, "Julian", 45, "Masculino", "Leucemia", "II", "En tratamiento");
+        Paciente p2 = new Paciente(2, "Antonieta", 50, "Femenino", "Linfoma", "III", "Remision");
+        Paciente p3 = new Paciente(3, "Karl", 60, "Masculino", "Sarcoma", "IV", "Fallecido");
+        Paciente p4 = new Paciente(4, "Dominic", 39, "Femenino", "Leucemia", "I", "En tratamiento");
+        Paciente p5 = new Paciente(5, "Louie", 55, "Masculino", "Linfoma", "II", "Remision");
+        Paciente p6 = new Paciente(6, "Sara", 47, "Femenino", "Sarcoma", "III", "En tratamiento");
 
-        // 3. Asignación manual de exámenes y tratamientos a pacientes específicos
-        // Se accede a cada paciente por su posición en la lista del hospital
-        hospital.getPacientes().get(0).agregarExamen(new Examen(1, "01/01/2026", "Biopsia", "Positivo"));
-        hospital.getPacientes().get(0).agregarTratamiento(new Tratamiento(1, "Quimioterapia", 30, "Nauseas"));
-        
-        // (Nota: Se repite este proceso para p2, p3, p4, p5 y p6 según el código original)
-        // ... (resto de asignaciones de exámenes y tratamientos) ...
+        hospital.agregarPaciente(p1);
+        hospital.agregarPaciente(p2);
+        hospital.agregarPaciente(p3);
+        hospital.agregarPaciente(p4);
+        hospital.agregarPaciente(p5);
+        hospital.agregarPaciente(p6);
 
-        // 4. Variables contadoras para las estadísticas
+        // Examenes
+        p1.agregarExamen(new Examen(1, "01/01/2026", "Biopsia", "Positivo"));
+        p2.agregarExamen(new Examen(2, "05/01/2026", "Resonancia", "Estable"));
+
+        p3.agregarExamen(new Examen(3, "02/01/2026", "Tomografia", "Mejora"));
+        p4.agregarExamen(new Examen(4, "06/01/2026", "Biopsia", "Negativo"));
+
+        p5.agregarExamen(new Examen(5, "03/01/2026", "Resonancia", "Grave"));
+        p6.agregarExamen(new Examen(6, "07/01/2026", "Tomografia", "Critico"));
+
+        // Tratamiento
+        p1.agregarTratamiento(new Tratamiento(1, "Quimioterapia", 30, "Nauseas"));
+        p2.agregarTratamiento(new Tratamiento(2, "Radioterapia", 20, "Fatiga"));
+
+        p3.agregarTratamiento(new Tratamiento(3, "Cirugia", 10, "Dolor"));
+        p4.agregarTratamiento(new Tratamiento(4, "Inmunoterapia", 25, "Fiebre"));
+
+        p5.agregarTratamiento(new Tratamiento(5, "Quimioterapia", 40, "Debilidad"));
+        p6.agregarTratamiento(new Tratamiento(6, "Radioterapia", 15, "Irritacion"));
+
+        // Estadisticas
         int leucemia = 0, linfoma = 0, sarcoma = 0;
         int remision = 0, tratamiento = 0, fallecido = 0;
 
-        // 5. Procesamiento de datos mediante un bucle que recorre todos los pacientes
         for (Paciente p : hospital.getPacientes()) {
 
-            // Clasificación por tipo de cáncer usando switch
             switch (p.getTipoCancer().toLowerCase()) {
                 case "leucemia": leucemia++; break;
                 case "linfoma": linfoma++; break;
                 case "sarcoma": sarcoma++; break;
             }
 
-            // Clasificación por estado actual
             switch (p.getEstado().toLowerCase()) {
                 case "remision": remision++; break;
                 case "en tratamiento": tratamiento++; break;
@@ -44,13 +60,14 @@ public class Sistema {
             }
         }
         
-        // 6. Generación de salida en consola
         System.out.println("Lista de pacientes:");
+
         for (Paciente p : hospital.getPacientes()) {
             System.out.println(p);
         }
         
-        System.out.println("\nExamenes:");
+        System.out.println("Examenes:");
+
         for (Paciente p : hospital.getPacientes()) {
             for (Examen e : p.getExamenes()) {
                 System.out.println(e);
@@ -58,13 +75,13 @@ public class Sistema {
         }
         
         System.out.println("Tratamientos:");
+
         for (Paciente p : hospital.getPacientes()) {
             for (Tratamiento t : p.getTratamientos()) {
                 System.out.println(t);
             }
         }
 
-        // 7. Cálculo y muestra de resultados finales y porcentajes
         int total = hospital.getPacientes().size();
 
         System.out.println("Pacientes por tipo de cancer:");
